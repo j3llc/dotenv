@@ -1,7 +1,7 @@
 package dotenv
 
 import (
-	"github.com/j3llc/dotenv.git"
+	"github.com/j3llc/dotenv"
 	"os"
 	"testing"
 )
