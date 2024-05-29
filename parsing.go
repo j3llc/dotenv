@@ -99,12 +99,9 @@ loop:
 			}
 			key = kv[0]
 			value = kv[1]
-			if strings.Contains(value, "'") {
-				strings.ReplaceAll(value, "'", "")
-			}
-			if strings.Contains(value, "\"") {
-				strings.ReplaceAll(value, "\"", "")
-			}
+			value = strings.TrimSpace(value)
+			value = removeWrapper(value, '\'')
+			value = removeWrapper(value, '"')
 			err = os.Setenv(key, value)
 			break loop
 		}
@@ -119,4 +116,18 @@ func startsWith(source, pattern string) bool {
 	source = strings.ToLower(source)
 	pattern = strings.ToLower(pattern)
 	return source[:len(pattern)] == pattern
+}
+
+// Removes wrapping characters. If s is wrapped by w then it removes the first
+// and last occurance of w
+func removeWrapper(s string, w byte) string {
+	if len(s) == 0 || len(s) == 1 {
+		return s
+	}
+	last := s[len(s)-1]
+	first := s[0]
+	if first == w && last == w {
+		s = s[1 : len(s)-1]
+	}
+	return s
 }

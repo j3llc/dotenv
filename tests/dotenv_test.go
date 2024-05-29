@@ -15,6 +15,9 @@ func TestLoad(t *testing.T) {
 	if v == "" {
 		t.Errorf("Variable foo not set")
 	}
+	if v != "bar" {
+		t.Errorf("Expected bar got %s", v)
+	}
 }
 
 func TestLoadPath(t *testing.T) {
