@@ -9,7 +9,7 @@ import (
 
 // Loads .env file from present working directory. If there is an error it returns that error
 // otherwise it returns nil. This functions uses [LoadPath] passing a default path using
-// the prsent working directory and assuming there is a .env file in it
+// the present working directory and assuming there is a .env file in it
 func Load() error {
 	path := "./.env"
 	if err := LoadPath(path); err != nil {

@@ -1,6 +1,6 @@
 package dotenv
 
-// Implements [error] interface for more specific package errors
+// Implements error interface for more specific package errors
 type DotError struct {
 	s string
 }
@@ -10,7 +10,7 @@ func (e *DotError) Error() string {
 	return e.s
 }
 
-// Created new environmet error
+// Creates new environment error
 func NewError(s string) *DotError {
 	return &DotError{s}
 }
@@ -21,5 +21,5 @@ var LPR_SHORT = NewError("Error parsing line. Lengt of slice is too short")
 // Line parsing error. Length of split is too long
 var LPR_LONG = NewError("Error parsing line. Length of slice is too long")
 
-// Line parsing error. Inavlid line not in correct format
+// Line parsing error. Invalid line not in correct format
 var LPR_INVALID_LINE = NewError("Error parsing line. Line is composed of special invalid characters")
